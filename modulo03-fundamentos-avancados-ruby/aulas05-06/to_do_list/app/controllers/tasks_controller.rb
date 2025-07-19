@@ -3,7 +3,9 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @q = Task.ransack(params[:q])
+    @q.sorts = Task.default_sort if @q.sorts.empty?
+    @tasks = @q.result(distinct: true)
 
     render json: @tasks.as_json(only: [:id, :title, :description, :status, :due_date])
   end
