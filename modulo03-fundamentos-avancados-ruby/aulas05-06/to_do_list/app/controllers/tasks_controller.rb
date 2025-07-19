@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
 
-    render json: @tasks
+    render json: @tasks.as_json(only: [:id, :title, :description, :status, :due_date])
   end
 
   # GET /tasks/1
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   def destroy
-    @task.destroy!
+    @task.cancelled!
   end
 
   private
