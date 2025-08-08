@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  armor_class: 1
+  attack_modifier: 1
+  dexterity_modifier: 1
+  max_hitpoints: 1
+  combatable: one
+  combatable_type: Combatable
+
+two:
+  armor_class: 1
+  attack_modifier: 1
+  dexterity_modifier: 1
+  max_hitpoints: 1
+  combatable: two
+  combatable_type: Combatable
