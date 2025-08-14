@@ -9,9 +9,9 @@ class CreateCombatants < ActiveRecord::Migration[8.0]
       t.integer :wisdom, null: false, default: 10
       t.integer :charisma, null: false, default: 10
       t.integer :max_hitpoints, null:false, default: 10
-      t.references :combatable, polymorphic: true, null: false
-
       t.timestamps
     end
+
+    add_reference :combatants, :combatable, polymorphic: true, null: false
   end
 end

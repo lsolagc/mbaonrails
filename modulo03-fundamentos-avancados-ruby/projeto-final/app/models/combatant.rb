@@ -1,3 +1,3 @@
 class Combatant < ApplicationRecord
-  belongs_to :combatable, polymorphic: true
+  delegated_type :combatable, types: %w[ PlayerCharacter ]
 end
