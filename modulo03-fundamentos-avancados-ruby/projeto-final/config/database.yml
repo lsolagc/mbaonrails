@@ -33,10 +33,10 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: projeto_final
+  username: projeto_final_development
 
   # The password associated with the PostgreSQL role (username).
-  #password:
+  password: projeto_final_development
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -62,6 +62,9 @@ development:
 test:
   <<: *default
   database: projeto_final_test
+  username: projeto_final_development
+  password: projeto_final_development
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
