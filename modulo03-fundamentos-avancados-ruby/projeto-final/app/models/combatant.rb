@@ -1,10 +1,12 @@
 class Combatant < ApplicationRecord
+  include AbilityScores
+
   delegated_type :combatable, types: %w[ PlayerCharacter ]
 
   attr_accessor :current_hit_points
 
   def initialize_for_combat
-    self.current_hit_points = max_hit_points
+    self.current_hit_points = max_hitpoints
   end
 
   def dead?
