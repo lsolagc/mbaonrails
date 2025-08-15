@@ -8,9 +8,9 @@ module PlayerCharacters
 
     def call
       if @player_character.destroy
-        Result.new(success?: true, player_character: @player_character)
+        Result.new(success?: true, player_character: @player_character, errors: nil)
       else
-        Result.new(success?: false, errors: @player_character.errors.full_messages)
+        Result.new(success?: false, player_character: @player_character, errors: @player_character.errors.full_messages)
       end
     rescue ActiveRecord::RecordNotFound => e
       Result.new(success?: false, errors: [e.message])
