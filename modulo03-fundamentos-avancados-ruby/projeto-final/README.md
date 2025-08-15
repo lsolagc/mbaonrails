@@ -1,6 +1,15 @@
 # Módulo 03 - Projeto Final
 
 ## Simulador de Combate!
+Este projeto expõe uma API para criar personagens baseados na quinta edição do sistema de RPG Dungeons and Dragons, e simular combates entre dois personagens selecionados pelo usuário.
+
+Os combates simulados são simples:
+- todos os participantes só podem utilizar a ação de Ataque;
+- todos os ataques causam (1d4 + modificador de força do atacante) de dano;
+- um ataque atinge seu alvo se a rolagem de acerto for igual ou maior que a `armor_class` do alvo;
+- movimento, ações bônus e reações não são simulados.
+
+A simulação de combate retorna um JSON contendo a quantidade de combates simulados, a quantidade e porcentagem de vitórias de cada combatente, e a duração média dos combates (em rounds).
 
 ### Tecnologias
 
@@ -36,8 +45,20 @@ rails s
 #### Criar um personagem
 ```bash
 curl -X POST localhost:3000/player_characters \
--H "Content-Type: application/json" \
--d '{ "player_character": {"name": "Aragorn", "armor_class": 13, "strength": 15, "dexterity": 12, "constitution": 14, "intelligence": 9, "wisdom": 11, "charisma": 10, "max_hitpoints": 20}}'
+  -H "Content-Type: application/json" \
+  -d '{
+    "player_character": {
+      "name": "Aragorn",
+      "armor_class": 13,
+      "strength": 15,
+      "dexterity": 12,
+      "constitution": 14,
+      "intelligence": 9,
+      "wisdom": 11,
+      "charisma": 10,
+      "max_hitpoints": 20
+    }
+  }'
 ```
 
 O comando acima retorna
@@ -87,7 +108,7 @@ O comando acima retorna
 #### Deletar personagem
 ```bash
 curl -X DELETE localhost:3000/player_characters/1 \
--H "Content-Type: application/json" | jq
+-H "Content-Type: application/json"
 ```
 
 O comando acima retorna 204 No Content. Para confirmar que o personagem foi deletado, é necessário consultar o personagem específico ou a lista de personagens.
@@ -95,8 +116,19 @@ O comando acima retorna 204 No Content. Para confirmar que o personagem foi dele
 #### Simular combate entre dois personagens
 ```bash
 curl -X POST localhost:3000/simulate_encounter \
--H "Content-Type: application/json" \
--d '{ "encounter" : { "combatant_one": { "type": "PlayerCharacter", "id": 2 }, "combatant_two": { "type": "PlayerCharacter", "id": 3 } } }' | jq
+  -H "Content-Type: application/json" \
+  -d '{
+    "encounter": {
+      "combatant_one": {
+        "type": "PlayerCharacter",
+        "id": 1
+      },
+      "combatant_two": {
+        "type": "PlayerCharacter",
+        "id": 2
+      }
+    }
+  }'
 ```
 
 O comando acima retorna
