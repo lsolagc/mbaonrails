@@ -1,0 +1,28 @@
+<h1>Criar Task</h1>
+
+<%= form_with url: tasks_path, method: :post, local: true do %>
+
+  <div>
+    <label for="task_title">Título</label><br>
+    <%= text_field_tag "task[title]", @task&.title, id: "task_title" %>
+  </div>
+
+  <div>
+    <label for="task_description">Descrição</label><br>
+    <%= text_area_tag "task[description]", @task&.description, id: "task_description" %>
+  </div>
+
+  <div>
+    <label for="task_deadline">Prazo</label><br>
+    <%= date_field_tag "task[deadline]", @task&.deadline, id: "task_deadline" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Criar" %>
+  </div>
+
+<% end %>
+
+<hr>
+
+<%= link_to "Voltar", tasks_path %>
