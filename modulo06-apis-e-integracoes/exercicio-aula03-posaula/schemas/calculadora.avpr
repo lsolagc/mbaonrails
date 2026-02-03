@@ -1,0 +1,22 @@
+{
+  "namespace": "mbaonrails.modulo06",
+  "protocol": "Calc",
+  
+  "types": [
+    {
+      "name": "SomarTipo",
+      "type": "record",
+      "fields": [
+        { "name": "x", "type": "int" },
+        { "name": "y", "type": "int" }
+      ]
+    }
+  ],
+
+  "messages": {
+    "somarMessage": {
+      "request": [{ "name": "SomarRequest", "type": "SomarTipo" }],
+      "response": "int"
+    }
+  }
+}

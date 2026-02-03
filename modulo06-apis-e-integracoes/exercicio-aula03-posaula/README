@@ -1,0 +1,7 @@
+First run the server as:
+
+ruby -r 'rubygems' ./server.rb
+
+Then run the client as:
+
+ruby -r 'rubygems' ./client.rb 1 2
