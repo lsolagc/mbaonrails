@@ -1,0 +1,2 @@
+class AvaliacaoAlfabetizacaoUf < ApplicationRecord
+end
