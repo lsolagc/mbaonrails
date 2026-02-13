@@ -20,6 +20,105 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background: #f7f7f7;
+        color: #1a1a1a;
+      }
+
+      a {
+        color: #1b5dbf;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .page {
+        max-width: 460px;
+        margin: 48px auto;
+        padding: 0 16px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #e1e1e1;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h1 {
+        margin: 0 0 16px 0;
+        font-size: 20px;
+      }
+
+      .field {
+        margin-bottom: 12px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+      }
+
+      .input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #cfcfcf;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .actions {
+        margin-top: 16px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid #2f6fd6;
+        background: #2f6fd6;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background: #2459ab;
+        border-color: #2459ab;
+      }
+
+      .flash {
+        margin-bottom: 12px;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .flash.alert {
+        background: #ffecec;
+        border: 1px solid #f1b8b8;
+        color: #8b1a1a;
+      }
+
+      .flash.notice {
+        background: #eaf6ea;
+        border: 1px solid #b7dfb7;
+        color: #1f6f1f;
+      }
+
+      .links {
+        margin-top: 12px;
+        display: flex;
+        gap: 12px;
+      }
+    </style>
   </head>
 
   <body>

@@ -1,0 +1,26 @@
+<div class="page">
+  <div class="card">
+    <h1>Criar conta</h1>
+
+    <%= form_with model: @user, url: users_path do |form| %>
+      <div class="field">
+        <%= form.label :email_address, "Email" %>
+        <%= form.email_field :email_address, required: true, autofocus: true, class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :password, "Senha" %>
+        <%= form.password_field :password, required: true, class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :password_confirmation, "Confirmar senha" %>
+        <%= form.password_field :password_confirmation, required: true, class: "input" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Criar", class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
