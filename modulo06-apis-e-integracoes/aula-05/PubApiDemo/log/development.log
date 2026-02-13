@@ -454,3 +454,85 @@ Migrating to CreateAvaliacaoAlfabetizacaoUfs (20260212233711)
   [1m[36mAvaliacaoAlfabetizacaoUf Count (39.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "avaliacao_alfabetizacao_ufs" /*application='PubApiDemo'*/[0m
   [1m[36mAvaliacaoAlfabetizacaoUf Load (0.5ms)[0m  [1m[34mSELECT "avaliacao_alfabetizacao_ufs".* FROM "avaliacao_alfabetizacao_ufs" ORDER BY "avaliacao_alfabetizacao_ufs"."id" ASC LIMIT 1 /*application='PubApiDemo'*/[0m
   [1m[36mAvaliacaoAlfabetizacaoUf Load (0.6ms)[0m  [1m[34mSELECT "avaliacao_alfabetizacao_ufs".* FROM "avaliacao_alfabetizacao_ufs" ORDER BY "avaliacao_alfabetizacao_ufs"."id" DESC LIMIT 1 /*application='PubApiDemo'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7041025637001256320) /*application='PubApiDemo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PubApiDemo'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PubApiDemo'*/[0m
+Migrating to CreateUsers (20260212234951)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='PubApiDemo'*/[0m
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email_address" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='PubApiDemo'*/[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email_address" ON "users" ("email_address") /*application='PubApiDemo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260212234951') RETURNING "version" /*application='PubApiDemo'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='PubApiDemo'*/[0m
+Migrating to CreateSessions (20260212234952)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='PubApiDemo'*/[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "ip_address" character varying, "user_agent" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_758836b4f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='PubApiDemo'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_user_id" ON "sessions" ("user_id") /*application='PubApiDemo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260212234952') RETURNING "version" /*application='PubApiDemo'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='PubApiDemo'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7041025637001256320) /*application='PubApiDemo'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PubApiDemo'*/[0m
+Started GET "/" for 127.0.0.1 at 2026-02-12 20:58:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PubApiDemo'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 9.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2026-02-12 20:58:27 -0300
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | GC: 0.0ms)
+Completed 200 OK in 78ms (Views: 26.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/passwords/new" for 127.0.0.1 at 2026-02-12 20:58:37 -0300
+Processing by PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering passwords/new.html.erb within layouts/application
+  Rendered passwords/new.html.erb within layouts/application (Duration: 13.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 15.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2026-02-12 20:59:48 -0300
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/layouts/application.html.erb
+  Rendering /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/actionpack-8.0.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb [42 times] (Duration: 19.0ms | GC: 0.0ms)
+  Rendered /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/actionpack-8.0.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 3.3ms | GC: 0.0ms)
+  Rendered /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 26.9ms | GC: 0.0ms)
+  Rendered layout /home/sola/.rbenv/versions/3.4.2/lib/ruby/gems/3.4.0/gems/railties-8.0.4/lib/rails/templates/layouts/application.html.erb (Duration: 27.7ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 29.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2026-02-12 20:59:48 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/passwords/new" for 127.0.0.1 at 2026-02-12 21:00:11 -0300
+Processing by PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering passwords/new.html.erb within layouts/application
+  Rendered passwords/new.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 6.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.5ms)
+
+
+Started GET "/rails/info/routes?query=user" for 127.0.0.1 at 2026-02-12 21:00:20 -0300
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"query" => "user"}
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 11.8ms)
+
+
+Started GET "/rails/info/routes?query=user" for 127.0.0.1 at 2026-02-12 21:00:22 -0300
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"query" => "user"}
+Completed 200 OK in 26ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 11.1ms)
+
+
