@@ -1,0 +1,10 @@
+<%= turbo_stream.replace "token_frame" do %>
+  <%= turbo_frame_tag "token_frame" do %>
+    <div class="field">
+      <strong>Token:</strong>
+      <div class="token-box">
+        <%= @token %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

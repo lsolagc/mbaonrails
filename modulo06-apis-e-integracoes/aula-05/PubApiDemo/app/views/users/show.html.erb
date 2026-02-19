@@ -10,5 +10,15 @@
     <div class="actions">
       <%= button_to "Log out", session_path, method: :delete, class: "button" %>
     </div>
+
+    <div class="actions">
+      <%= button_to "Gerar token", tokens_path, 
+          method: :post, form: { data: { turbo_frame: "token_frame" } },
+          class: "button" %>
+    </div>
+
+    <%= turbo_frame_tag "token_frame" do %>
+      <%# Renderizado por modulo06-apis-e-integracoes/aula-05/PubApiDemo/app/views/tokens/create.html.erb %>
+    <% end %>
   </div>
 </div>

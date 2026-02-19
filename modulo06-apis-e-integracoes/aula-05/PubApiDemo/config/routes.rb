@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get "avaliacao_alfabetizacao/index"
+    end
+  end
   resources :users, only: %i[new create show]
+  resources :tokens, only: %i[create]
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
